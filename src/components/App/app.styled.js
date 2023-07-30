@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import mainBg from "../../assets/mainBg.png";
+import mainBgDesktop from "../../assets/mainBgDesktop.png";
 
 export const Wrapper = styled(Box)`
   max-width: 360px;
@@ -506,7 +507,10 @@ export const Wrapper = styled(Box)`
     }
 
     .hero {
-      background: none;
+      background: url(${mainBgDesktop});
+      background-size: 950px;
+      background-repeat: no-repeat;
+      background-position: bottom 25px left 52px;
     }
 
     .heroItem {
