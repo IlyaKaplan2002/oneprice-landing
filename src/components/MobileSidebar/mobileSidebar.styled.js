@@ -60,4 +60,8 @@ export const Wrapper = styled(Box)`
     display: block;
     margin: 0 auto;
   }
+
+  @media screen and (min-width: 1024px) {
+    transform: translateX(-100%) !important;
+  }
 `;

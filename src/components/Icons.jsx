@@ -13,6 +13,94 @@ export const Icons = () => (
     >
       <defs>
         <symbol
+          xmlns="http://www.w3.org/2000/svg"
+          id="footerDividerDesktop"
+          viewBox="0 0 660 3"
+          fill="none"
+        >
+          <path opacity="0.2" d="M0 1.1875L659 2.00006" stroke="white" />
+        </symbol>
+        <symbol
+          id="heroButtonIconDesktop"
+          viewBox="0 0 223 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.5"
+            y="0.5"
+            width="222"
+            height="55"
+            rx="27.5"
+            stroke="url(#paint0_linear_1_27)"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_27"
+              x1="239.725"
+              y1="28"
+              x2="1.24109e-06"
+              y2="28"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="white" />
+              <stop offset="1" stop-color="white" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </symbol>
+        <symbol
+          xmlns="http://www.w3.org/2000/svg"
+          id="buttonsDividerDesktop"
+          viewBox="0 0 2 236"
+          fill="none"
+        >
+          <path opacity="0.2" d="M1 0L1.00001 236" stroke="white" />
+        </symbol>
+        <symbol
+          xmlns="http://www.w3.org/2000/svg"
+          id="heroIconDesktop"
+          viewBox="0 0 202 160"
+          fill="none"
+        >
+          <rect
+            opacity="0.2"
+            x="-0.541872"
+            y="-0.541872"
+            width="158.916"
+            height="200.916"
+            rx="31.4581"
+            transform="matrix(0 -1 -1 0 200.916 158.916)"
+            fill="url(#paint0_linear_1_31)"
+            fill-opacity="0.2"
+            stroke="url(#paint1_linear_1_31)"
+            stroke-width="1.08374"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_31"
+              x1="80"
+              y1="0"
+              x2="80"
+              y2="202"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="white" />
+              <stop offset="1" stop-color="white" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient
+              id="paint1_linear_1_31"
+              x1="80"
+              y1="0"
+              x2="80"
+              y2="202"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="white" />
+              <stop offset="1" stop-color="white" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </symbol>
+        <symbol
           viewBox="0 0 18 13"
           fill="none"
           id="menu"

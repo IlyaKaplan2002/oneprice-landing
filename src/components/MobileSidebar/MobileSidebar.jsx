@@ -1,14 +1,14 @@
 import classNames from "classnames";
 import { Wrapper } from "./mobileSidebar.styled";
 import { Box } from "@mui/material";
-import { enableBodyScroll } from "body-scroll-lock";
 import { useCallback } from "react";
 import { scrollTo } from "../../helpers";
+import { unlock } from "tua-body-scroll-lock";
 
-const MobileSidebar = ({ open, setOpen }) => {
+const MobileSidebar = ({ open, setOpen, openForm }) => {
   const navigate = useCallback(
     (to) => {
-      enableBodyScroll(document.body);
+      unlock(document.getElementById("modal") || undefined);
       scrollTo(to);
       setOpen(false);
     },
@@ -40,7 +40,15 @@ const MobileSidebar = ({ open, setOpen }) => {
           </Box>
         </Box>
 
-        <Box component="button" className="sidebarButton c-fw-600">
+        <Box
+          component="button"
+          className="sidebarButton c-fw-600"
+          onClick={() => {
+            unlock(document.getElementById("modal") || undefined);
+            openForm();
+            setOpen(false);
+          }}
+        >
           СПІВПРАЦЮВАТИ
         </Box>
       </Box>
