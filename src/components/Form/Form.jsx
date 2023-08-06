@@ -504,7 +504,7 @@ const Form = ({ open, onClose }) => {
           />
         </Box>
 
-        <Box component="button" type="submit" className="formButton">
+        <Box component="button" type="submit" className="formButton hover">
           Надіслати
         </Box>
       </Box>

@@ -24,7 +24,7 @@ const MobileSidebar = ({ open, setOpen, openForm }) => {
             <Box className="sidebarDivider" />
           </Box>
 
-          <Box component="li" onClick={() => navigate("video")}>
+          <Box component="li" onClick={() => navigate("videoMobile")}>
             <Box component="p">ВІДЕО</Box>
             <Box className="sidebarDivider" />
           </Box>
@@ -42,7 +42,7 @@ const MobileSidebar = ({ open, setOpen, openForm }) => {
 
         <Box
           component="button"
-          className="sidebarButton c-fw-600"
+          className="sidebarButton c-fw-600 hover"
           onClick={() => {
             unlock(document.getElementById("modal") || undefined);
             openForm();

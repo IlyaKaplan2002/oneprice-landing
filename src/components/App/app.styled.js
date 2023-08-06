@@ -156,6 +156,7 @@ export const Wrapper = styled(Box)`
       align-items: center;
       justify-content: center;
       align-self: center;
+      border-radius: 120px;
 
       .heroButtonIcon {
         position: absolute;
@@ -480,6 +481,22 @@ export const Wrapper = styled(Box)`
           font-weight: 500;
           opacity: 0.5;
           cursor: pointer;
+          position: relative;
+          transition: opacity 300ms ease;
+        }
+
+        li:hover {
+          opacity: 1;
+        }
+
+        li:hover::after {
+          content: "";
+          height: 3px;
+          width: 100%;
+          background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%);
+          position: absolute;
+          left: 0;
+          bottom: -6px;
         }
       }
 
@@ -620,6 +637,7 @@ export const Wrapper = styled(Box)`
     }
 
     .videoButton {
+      display: block;
       font-size: 20px;
       width: 223px;
       height: 56px;
@@ -737,10 +755,21 @@ export const Wrapper = styled(Box)`
           font-size: 16px;
           font-weight: 400;
           cursor: pointer;
+          position: relative;
 
           &:not(:last-child) {
             margin-right: 54px;
           }
+        }
+
+        li:hover::after {
+          content: "";
+          height: 3px;
+          width: 100%;
+          background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%);
+          position: absolute;
+          left: 0;
+          bottom: -6px;
         }
 
         .button {

@@ -33,6 +33,10 @@ export const Wrapper = styled(Box)`
       }
     }
 
+    li:hover .sidebarDivider {
+      background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%);
+    }
+
     p {
       font-size: 16px;
       font-weight: 500;

@@ -53,3 +53,14 @@
 .c-font-op {
     opacity: 0.5;
 }
+
+.hover {
+    transition: background 200ms ease, color 200ms ease;
+}
+
+.hover:hover {
+    background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%) !important;
+    color: rgba(26, 26, 26, 0.75) !important;
+    background-clip: border-box !important;
+    -webkit-text-fill-color: rgba(26, 26, 26, 0.75) !important;
+}

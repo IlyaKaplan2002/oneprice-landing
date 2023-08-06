@@ -73,7 +73,7 @@ function App() {
 
             <Box
               component="button"
-              className="navButton c-fw-600"
+              className="navButton c-fw-600 hover"
               onClick={() => {
                 openForm();
               }}
@@ -144,7 +144,7 @@ function App() {
             <Box
               component="button"
               onClick={openForm}
-              className="heroButton left c-fw-600"
+              className="heroButton left c-fw-600 hover"
             >
               СПІВПРАЦЮВАТИ
             </Box>
@@ -163,7 +163,7 @@ function App() {
               className="buttonsDivider desktop"
             />
 
-            <Box component="button" className="heroButton right c-fw-600">
+            <Box component="button" className="heroButton right c-fw-600 hover">
               <Icon
                 name="heroButtonIcon"
                 className="heroButtonIcon mobile"
@@ -254,12 +254,20 @@ function App() {
             </Box>
           </Box>
 
-          <Box component="button" className="videoButton desktop c-fw-600">
+          <Box
+            onClick={() => window.open("https://oneprice.ua/", "_blank")}
+            component="button"
+            className="videoButton desktop c-fw-600 hover"
+          >
             БІЛЬШЕ
           </Box>
         </Box>
 
-        <Box component="section" id="video" className="videoSection mobile">
+        <Box
+          component="section"
+          id="videoMobile"
+          className="videoSection mobile"
+        >
           <iframe
             className="video"
             src="https://www.youtube.com/embed/sDFq6GftlNw"
@@ -269,7 +277,11 @@ function App() {
             allowfullscreen
           ></iframe>
 
-          <Box component="button" className="videoButton c-fw-600">
+          <Box
+            onClick={() => window.open("https://oneprice.ua/", "_blank")}
+            component="button"
+            className="videoButton c-fw-600 hover"
+          >
             БІЛЬШЕ
           </Box>
         </Box>
@@ -327,7 +339,13 @@ function App() {
             </Box>
           </Box>
 
-          <Box component="button" className="partnerButton c-fw-600">
+          <Box
+            component="button"
+            onClick={() =>
+              window.open("https://oneprice.ua/postachalnykam/", "_blank")
+            }
+            className="partnerButton c-fw-600 hover"
+          >
             БІЛЬШЕ
           </Box>
         </Box>
@@ -416,7 +434,7 @@ function App() {
             <Box className="contactFormBottomWrapper">
               <Box
                 component="button"
-                className="contactFormButton c-fw-600"
+                className="contactFormButton c-fw-600 hover"
                 type="submit"
               >
                 НАДІСЛАТИ
@@ -463,7 +481,7 @@ function App() {
 
               <Box
                 component="li"
-                className="button c-fw-600"
+                className="button c-fw-600 hover"
                 onClick={() => {
                   openForm();
                 }}
