@@ -762,7 +762,7 @@ export const Wrapper = styled(Box)`
           }
         }
 
-        li:hover::after {
+        li:not(.button):hover::after {
           content: "";
           height: 3px;
           width: 100%;
