@@ -18,7 +18,7 @@ export const Wrapper = styled(Backdrop)`
 
   .logo {
     font-size: 72px;
-    background: -webkit-linear-gradient(308deg, #a7f306 0%, #f3cd06 100%);
+    background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 24px;
@@ -55,6 +55,10 @@ export const Wrapper = styled(Backdrop)`
     font-family: "Roboto", sans-serif;
     font-size: 15px;
 
+    &.error {
+      border: 1px solid red;
+    }
+
     &::placeholder {
       color: #b3b3b3;
       font-family: "Roboto", sans-serif;
@@ -80,7 +84,7 @@ export const Wrapper = styled(Backdrop)`
     margin: 0 auto;
     font-size: 14px;
     font-weight: 600;
-    background: linear-gradient(228deg, #a7f306 26.56%, #f3cd06 100%);
+    background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -47,7 +47,8 @@ export const Wrapper = styled(Box)`
   .logo {
     cursor: pointer;
     font-size: 72px;
-    background: -webkit-linear-gradient(308deg, #a7f306 0%, #f3cd06 100%);
+    background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 24px;
@@ -58,6 +59,40 @@ export const Wrapper = styled(Box)`
     background-size: 351px;
     background-repeat: no-repeat;
     background-position: bottom 16px left 14px;
+  }
+
+  .heroButtonContainer {
+    z-index: 1;
+    position: relative;
+    border-radius: 35px;
+    border: 1px solid #a7f306;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 210px;
+    height: 67px;
+
+    .heroIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .heroButton.left {
+    border-radius: 35px;
+    background: #efefef;
+    width: 193px;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    z-index: 1;
   }
 
   .title {
@@ -76,7 +111,7 @@ export const Wrapper = styled(Box)`
     margin-bottom: 49px;
 
     span {
-      background: -webkit-linear-gradient(308deg, #a7f306 0%, #f3cd06 100%);
+      background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -182,7 +217,7 @@ export const Wrapper = styled(Box)`
   }
 
   .movingString {
-    background: linear-gradient(308deg, #a7f306 0%, #f3cd06 100%);
+    background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
     padding-top: 8px;
     padding-bottom: 8px;
   }
@@ -217,7 +252,7 @@ export const Wrapper = styled(Box)`
 
   .sectionDivider {
     height: 2px;
-    background: linear-gradient(308deg, #a7f306 0%, #f3cd06 100%), #d9d9d9;
+    background: linear-gradient(308deg, #a7f306 0%, #517406 100%), #d9d9d9;
     margin-bottom: 16px;
   }
 
@@ -225,7 +260,7 @@ export const Wrapper = styled(Box)`
     text-align: center;
     font-size: 40px;
     letter-spacing: 1px;
-    background: linear-gradient(308deg, #a7f306 0%, #f3cd06 100%);
+    background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -419,7 +454,7 @@ export const Wrapper = styled(Box)`
 
     .contactFormLogo {
       font-size: 20px;
-      background: linear-gradient(308deg, #a7f306 0%, #f3cd06 100%);
+      background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -493,7 +528,7 @@ export const Wrapper = styled(Box)`
           content: "";
           height: 3px;
           width: 100%;
-          background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%);
+          background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
           position: absolute;
           left: 0;
           bottom: -6px;
@@ -766,7 +801,7 @@ export const Wrapper = styled(Box)`
           content: "";
           height: 3px;
           width: 100%;
-          background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%);
+          background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
           position: absolute;
           left: 0;
           bottom: -6px;

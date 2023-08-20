@@ -141,12 +141,28 @@ function App() {
           </Box>
 
           <Box className="buttonsBox">
-            <Box
-              component="button"
-              onClick={openForm}
-              className="heroButton left c-fw-600 hover"
-            >
-              СПІВПРАЦЮВАТИ
+            <Box className="heroButtonContainer">
+              <Icon
+                name="heroIcon1Mobile"
+                className="heroIcon"
+                width={252}
+                height={106}
+              />
+              <Icon
+                name="heroIcon2Mobile"
+                className="heroIcon"
+                width={226}
+                height={81}
+              />
+              <Box
+                component="button"
+                className="heroButton left c-font-roboto hover"
+                onClick={() => {
+                  openForm();
+                }}
+              >
+                СПІВПРАЦЮВАТИ
+              </Box>
             </Box>
 
             <Icon

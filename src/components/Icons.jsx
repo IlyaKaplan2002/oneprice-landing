@@ -13,6 +13,40 @@ export const Icons = () => (
     >
       <defs>
         <symbol
+          id="heroIcon2Mobile"
+          viewBox="0 0 227 82"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.837012"
+            y="0.623145"
+            width="225.704"
+            height="80.925"
+            rx="34.85"
+            stroke="#A7F306"
+            stroke-opacity="0.62"
+            stroke-width="0.3"
+          />
+        </symbol>
+        <symbol
+          id="heroIcon1Mobile"
+          viewBox="0 0 253 107"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.1"
+            y="0.1"
+            width="252"
+            height="106"
+            rx="48.4"
+            stroke="#A7F306"
+            strokeOpacity="0.44"
+            strokeWidth="0.2"
+          />
+        </symbol>
+        <symbol
           xmlns="http://www.w3.org/2000/svg"
           id="footerDividerDesktop"
           viewBox="0 0 660 3"
@@ -214,22 +248,22 @@ export const Icons = () => (
         >
           <path
             d="M20 6L9 17L4 12"
-            stroke="url(#paint0_linear_50_65)"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="url(#paint0_linear_0_59)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <defs>
             <linearGradient
-              id="paint0_linear_50_65"
+              id="paint0_linear_0_59"
               x1="20.5714"
               y1="15.9786"
               x2="8.478"
               y2="2.3753"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#A7F306" />
-              <stop offset="1" stop-color="#F3CD06" />
+              <stop stopColor="#A7F306" />
+              <stop offset="1" stopColor="#517406" />
             </linearGradient>
           </defs>
         </symbol>

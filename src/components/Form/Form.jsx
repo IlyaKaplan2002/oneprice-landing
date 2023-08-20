@@ -8,11 +8,118 @@ import {
 import { Wrapper } from "./form.styled";
 import { Icon } from "../Icon";
 import { MuiFileInput } from "mui-file-input";
+import { useFormik } from "formik";
+import { array, boolean, object, string } from "yup";
+import classNames from "classnames";
+import { useCallback } from "react";
+import axios from "axios";
+
+const schema = object({
+  name: string().required(),
+  codeEDRPO: string().required(),
+  place: string().required(),
+  registration: string().required(),
+  individualNumberPdv: string().required(),
+  activityType: string().required(),
+  salesMarks: string().required(),
+  website: string().required(),
+  services: string().required(),
+  pib: string().required(),
+  role: string().required(),
+  email: string().email().required(),
+  phone: string().required(),
+  comments: string(),
+  agree: boolean().isTrue(),
+  certificates: array().required().min(1),
+  prices: array().required().min(1),
+});
+
+const initialValues = {
+  name: "",
+  codeEDRPO: "",
+  place: "",
+  registration: "ТОВ з ПДВ",
+  individualNumberPdv: "",
+  activityType: "Трейдер",
+  salesMarks: "",
+  website: "",
+  services: "Відстрочка платежу",
+  pib: "",
+  role: "",
+  email: "",
+  phone: "",
+  comments: "",
+  agree: false,
+  certificates: [],
+  prices: [],
+};
+const initialErrors = {
+  name: "",
+  codeEDRPO: "",
+  place: "",
+  registration: "",
+  individualNumberPdv: "",
+  activityType: "",
+  salesMarks: "",
+  website: "",
+  services: "",
+  pib: "",
+  role: "",
+  email: "",
+  phone: "",
+  comments: "",
+  agree: "",
+  certificates: "",
+  prices: "",
+};
 
 const Form = ({ open, onClose }) => {
+  const handleSubmit = useCallback(
+    async (data, formikHelpers) => {
+      const formData = Object.entries(data).reduce((acc, [key, value]) => {
+        if (key === "agree") return acc;
+        if (key === "certificates" || key === "prices") {
+          value.forEach((item) => {
+            acc.append(key, item);
+          });
+
+          return acc;
+        }
+        acc.append(key, value);
+
+        return acc;
+      }, new FormData());
+
+      await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}/suppliers`,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      formikHelpers.resetForm();
+      onClose();
+    },
+    [onClose]
+  );
+
+  const formik = useFormik({
+    validateOnBlur: true,
+    initialValues,
+    initialErrors,
+    validateOnChange: true,
+    validationSchema: schema,
+    onSubmit: handleSubmit,
+  });
+
   return (
     <Wrapper open={open}>
-      <Box component="form" className="modal" id="modal">
+      <Box
+        component="form"
+        className="modal"
+        id="modal"
+        onSubmit={formik.handleSubmit}
+      >
         <Box
           display="flex"
           justifyContent="space-between"
@@ -34,10 +141,14 @@ const Form = ({ open, onClose }) => {
           className="checkbox"
         >
           <Checkbox
+            value={formik.values.agree}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            name="agree"
             sx={{
               padding: 0,
               mr: 1,
-              color: "#A7F306",
+              color: formik.errors.agree ? "red" : "#A7F306",
               "&.Mui-checked": {
                 color: "#A7F306",
               },
@@ -48,24 +159,50 @@ const Form = ({ open, onClose }) => {
 
         <Box className="inputWrapper">
           <Box className="label">Назва підприємства</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.name })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Код ЄДРПОУ</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="codeEDRPO"
+            value={formik.values.codeEDRPO}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.codeEDRPO })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Місто і область</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="place"
+            value={formik.values.place}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.place })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Державна реєстрація</Box>
           <RadioGroup
-          //   value={value}
-          // onChange={handleChange}
+            name="registration"
+            value={formik.values.registration}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           >
             <Box
               sx={{ fontSize: "16px", mb: 1, display: "block" }}
@@ -161,7 +298,13 @@ const Form = ({ open, onClose }) => {
 
             <input
               type="text"
-              className="input"
+              name="individualNumberPdv"
+              value={formik.values.individualNumberPdv}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={classNames("input", {
+                error: formik.errors.individualNumberPdv,
+              })}
               placeholder="Індивідуальний номер платника ПДВ"
             />
           </RadioGroup>
@@ -170,8 +313,10 @@ const Form = ({ open, onClose }) => {
         <Box className="inputWrapper">
           <Box className="label">Вид діяльності</Box>
           <RadioGroup
-          //   value={value}
-          // onChange={handleChange}
+            name="activityType"
+            value={formik.values.activityType}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           >
             <Box
               sx={{ fontSize: "16px", mb: 1, display: "block" }}
@@ -264,19 +409,37 @@ const Form = ({ open, onClose }) => {
 
         <Box className="inputWrapper">
           <Box className="label">Торгові марки, які Ви представляєте</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="salesMarks"
+            value={formik.values.salesMarks}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.salesMarks })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Сайт</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="website"
+            value={formik.values.website}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.website })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Послуги, які надаєте </Box>
           <RadioGroup
-          //   value={value}
-          // onChange={handleChange}
+            name="services"
+            value={formik.values.services}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           >
             <Box
               sx={{ fontSize: "16px", mb: 1, display: "block" }}
@@ -435,32 +598,67 @@ const Form = ({ open, onClose }) => {
 
         <Box className="inputWrapper">
           <Box className="label">ПІБ заповнювача</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="pib"
+            value={formik.values.pib}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.pib })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Посада заповнювача</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="role"
+            value={formik.values.role}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.role })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">E-mail</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.email })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Номер телефону</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="phone"
+            value={formik.values.phone}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.phone })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
           <Box className="label">Ваші додаткові коментарі</Box>
-          <input type="text" className="input" placeholder="Your answer" />
-        </Box>
-
-        <Box className="inputWrapper">
-          <Box className="label">Ваші додаткові коментарі</Box>
-          <input type="text" className="input" placeholder="Your answer" />
+          <input
+            type="text"
+            name="comments"
+            value={formik.values.comments}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={classNames("input", { error: formik.errors.comments })}
+            placeholder="Your answer"
+          />
         </Box>
 
         <Box className="inputWrapper">
@@ -471,16 +669,14 @@ const Form = ({ open, onClose }) => {
           <MuiFileInput
             className="fileInput"
             placeholder="Insert a file"
-            value={[
-              new File(["foo"], "foo.txt", {
-                type: "text/plain",
-              }),
-              new File(["foo"], "foo.txt", {
-                type: "text/plain",
-              }),
-            ]}
+            value={formik.values.certificates}
             multiple
-            // onChange={handleChange}
+            onChange={(val) => {
+              formik.setFieldValue(
+                "certificates",
+                val.length ? [...formik.values.certificates, ...val] : []
+              );
+            }}
             hideSizeText
           />
         </Box>
@@ -490,16 +686,14 @@ const Form = ({ open, onClose }) => {
           <MuiFileInput
             className="fileInput"
             placeholder="Insert a file"
-            value={[
-              new File(["foo"], "foo.txt", {
-                type: "text/plain",
-              }),
-              new File(["foo"], "foo.txt", {
-                type: "text/plain",
-              }),
-            ]}
+            value={formik.values.prices}
             multiple
-            // onChange={handleChange}
+            onChange={(val) => {
+              formik.setFieldValue(
+                "prices",
+                val.length ? [...formik.values.prices, ...val] : []
+              );
+            }}
             hideSizeText
           />
         </Box>

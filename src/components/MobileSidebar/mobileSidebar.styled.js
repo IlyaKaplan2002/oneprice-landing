@@ -34,7 +34,7 @@ export const Wrapper = styled(Box)`
     }
 
     li:hover .sidebarDivider {
-      background: linear-gradient(321deg, #a7f306 0%, #f3cd06 100%);
+      background: linear-gradient(308deg, #a7f306 0%, #517406 100%);
     }
 
     p {
